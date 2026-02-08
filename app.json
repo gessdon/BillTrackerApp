@@ -1,0 +1,9 @@
+{
+  "name": "BillTrackerApp",
+  "displayName": "智能记账",
+  "extra": {
+    "eas": {
+      "projectId": "com.billtrackerapp"
+    }
+  }
+}

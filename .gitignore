@@ -1,0 +1,43 @@
+# OSX
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/app/release/
+android/.idea/
+android/local.properties
+*.keystore
+!android/app/debug.keystore
+
+# iOS
+ios/Pods/
+ios/build/
+*.xcworkspace
+!default.xcworkspace
+
+# Expo
+.expo/
+.expo-shared/
+
+# Misc
+*.iml
+.idea/
+.vscode/
+.env
+*.log
+*.orig
+*.rej
+*~
+
+# Bundle artifacts
+*.jsbundle
+
+# CocoaPods
+/ios/Pods/

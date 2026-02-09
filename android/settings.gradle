@@ -14,3 +14,10 @@ if (rnGradlePlugin.exists()) {
     includeBuild(rnGradlePlugin)
 }
 
+// 确保 react-native 模块能被找到
+def reactNativePath = file("../node_modules/react-native")
+if (reactNativePath.exists()) {
+    include ':react-native'
+    project(':react-native').projectDir = reactNativePath
+}
+

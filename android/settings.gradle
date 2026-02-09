@@ -1,0 +1,4 @@
+rootProject.name = 'BillTrackerApp'
+apply from: file("../node_modules/@react-native/settings-gradle/settings.gradle")
+include ':app'
+includeBuild('../node_modules/@react-native/gradle-plugin')

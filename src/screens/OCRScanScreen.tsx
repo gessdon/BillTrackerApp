@@ -12,7 +12,7 @@ import {
 import {Text, Button, Card, ActivityIndicator} from 'react-native-paper';
 import {launchImageLibrary} from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
-import TextRecognition from 'react-native-mlkit-text-recognition';
+// import TextRecognition from 'react-native-mlkit-text-recognition';
 import {parseBillText, ParsedBillInfo} from '../utils/ocrParser';
 import {Bill, BillCategory, BillType} from '../types/Bill';
 import {addBill} from '../utils/storage';
@@ -80,17 +80,17 @@ const OCRScanScreen = ({navigation}: any) => {
     }
   };
 
-  // 执行OCR识别 - 使用Google ML Kit
+  // 执行OCR识别 - 模拟版本（等待后续集成真实OCR）
   const performOCR = async (uri: string) => {
     setLoading(true);
     try {
-      // 使用Google ML Kit进行文字识别
-      const result = await TextRecognition.recognize(uri);
+      // 模拟OCR识别过程
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // 提取识别的文本
-      const recognizedText = result.text || '';
+      // 模拟识别的文本
+      const recognizedText = '支付宝支付\n商户：星巴克咖啡\n金额：38.50元\n时间：2024-02-09 14:30';
       
-      console.log('OCR识别结果:', recognizedText);
+      console.log('OCR识别结果（模拟）:', recognizedText);
       setOcrText(recognizedText);
 
       if (!recognizedText || recognizedText.trim().length === 0) {
@@ -277,14 +277,14 @@ const OCRScanScreen = ({navigation}: any) => {
             <Icon name="bulb-outline" size={16} /> 使用提示
           </Text>
           <Text style={styles.tipsText}>
-            • 已集成Google ML Kit离线OCR识别{'\n'}
-            • 支持识别微信、支付宝、美团等常见账单{'\n'}
+            • 目前使用模拟OCR数据演示功能{'\n'}
+            • 支持手动输入账单信息{'\n'}
             • 确保图片清晰，文字可读{'\n'}
             • 识别后可手动调整金额和分类{'\n'}
-            • 完全离线运行，保护隐私
+            • 真实OCR功能将在后续版本集成
           </Text>
           <Text style={styles.tipsNote}>
-            ✅ 已启用真实OCR识别功能
+            ⚠️ 当前为演示版本，使用模拟数据
           </Text>
         </Card.Content>
       </Card>

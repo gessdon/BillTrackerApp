@@ -1,4 +1,16 @@
 rootProject.name = 'BillTrackerApp'
-apply from: file("../node_modules/@react-native/settings-gradle/settings.gradle")
+
+// 安全地加载 React Native settings
+def rnSettingsGradle = file("../node_modules/@react-native/settings-gradle/settings.gradle")
+if (rnSettingsGradle.exists()) {
+    apply from: rnSettingsGradle
+}
+
 include ':app'
-includeBuild('../node_modules/@react-native/gradle-plugin')
+
+// 安全地加载 gradle-plugin
+def rnGradlePlugin = file("../node_modules/@react-native/gradle-plugin")
+if (rnGradlePlugin.exists()) {
+    includeBuild(rnGradlePlugin)
+}
+

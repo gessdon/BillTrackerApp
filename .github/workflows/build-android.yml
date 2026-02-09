@@ -44,12 +44,6 @@ jobs:
             -storepass android -keypass android \
             -dname "CN=BillTracker, OU=App, O=Company, L=City, ST=State, C=US"
 
-      - name: 添加Gradle包装器JAR
-        run: |
-          cd android
-          mkdir -p gradle/wrapper
-          curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.jar
-
       - name: 构建 Android APK
         run: |
           cd android

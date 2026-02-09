@@ -1,24 +1,19 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 
-def enableProguardInReleaseBuilds = false
-def jscFlavor = 'org.webkit:android-jsc:+'
-
 android {
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.billtrackerapp"
+    
     defaultConfig {
         applicationId "com.billtrackerapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
-        }
     }
     
     signingConfigs {
@@ -36,22 +31,15 @@ android {
         }
         release {
             signingConfig signingConfigs.debug
-            minifyEnabled enableProguardInReleaseBuilds
+            minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    
-    // React Native - 包含 PackageList 支持
-    implementation 'com.facebook.react:react-android:0.73.2'
-    implementation 'com.facebook.react:hermes-android:0.73.2'
-    implementation 'com.facebook.react:react-native:0.73.2'
-    
-    // React Navigation dependencies
+    // React Native依赖由自动配置处理,无需手动添加
+    // 这里只需要添加第三方依赖
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }
-

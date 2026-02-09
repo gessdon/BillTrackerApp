@@ -25,10 +25,10 @@ allprojects {
         google()
         mavenCentral()
         maven {
-            url = file("../../node_modules/@react-native/assets-registry/")
+            url "$rootDir/../node_modules/@react-native/assets-registry/"
         }
         maven {
-            url = file("../../node_modules/react-native/android")
+            url "$rootDir/../node_modules/react-native/android"
         }
     }
 }

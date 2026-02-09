@@ -1,5 +1,5 @@
 rootProject.name = 'BillTrackerApp'
 
-apply from: file("../node_modules/@react-native/gradle-plugin/settings.gradle")
+apply from: file("../node_modules/@react-native/settings-gradle/settings.gradle")
 
 include ':app'

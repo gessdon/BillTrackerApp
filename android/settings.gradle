@@ -1,14 +1,8 @@
 rootProject.name = 'BillTrackerApp'
 
-// 定义扩展属性供 React Native 自动配置使用
-ext {
-    buildToolsVersion = "34.0.0"
-    minSdkVersion = 24
-    compileSdkVersion = 34
-    targetSdkVersion = 34
-    ndkVersion = "25.1.8937393"
-}
+// React Native 0.73 标准配置
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); 
+applyNativeModulesSettingsGradle(settings)
 
-apply from: file("../node_modules/@react-native/settings-gradle/settings.gradle")
-
+includeBuild('../node_modules/@react-native/gradle-plugin')
 include ':app'

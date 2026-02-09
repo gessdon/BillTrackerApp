@@ -1,14 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+// React Native 0.73: 扩展属性需要定义在根作用域
+ext {
+    buildToolsVersion = "34.0.0"
+    minSdkVersion = 24
+    compileSdkVersion = 34
+    targetSdkVersion = 34
+    ndkVersion = "25.1.8937393"
+    kotlinVersion = "1.9.0"
+}
+
 buildscript {
-    ext {
-        buildToolsVersion = "34.0.0"
-        minSdkVersion = 24
-        compileSdkVersion = 34
-        targetSdkVersion = 34
-        ndkVersion = "25.1.8937393"
-        kotlinVersion = "1.9.0"
-    }
     repositories {
         google()
         mavenCentral()

@@ -1,3 +1,4 @@
+
 name: Build Android APK
 
 on:
@@ -28,12 +29,12 @@ jobs:
           java-version: '17'
 
       - name: 安装依赖
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: 设置 Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: 创建 Release Keystore
+      - name: 创建签名配置
         run: |
           cd android/app
           keytool -genkeypair -v -storetype PKCS12 \
@@ -43,11 +44,17 @@ jobs:
             -storepass android -keypass android \
             -dname "CN=BillTracker, OU=App, O=Company, L=City, ST=State, C=US"
 
+      - name: 添加Gradle包装器JAR
+        run: |
+          cd android
+          mkdir -p gradle/wrapper
+          curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.jar
+
       - name: 构建 Android APK
         run: |
           cd android
           chmod +x ./gradlew
-          ./gradlew assembleRelease --no-daemon
+          ./gradlew assembleRelease --no-daemon --stacktrace
 
       - name: 上传 APK
         uses: actions/upload-artifact@v4
